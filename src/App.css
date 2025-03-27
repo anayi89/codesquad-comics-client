@@ -1,42 +1,436 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+:root {
+  --blue-color: #063C5E;
+  --white-color: #FFFFFF;
+  --yellow-color: #FCCF14;
+  --teal-color: #278080;
+  --sky-color: #A4DCDC;
+  --gray-color: #D3D3D3;
+  --black-color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto;
+  width: 60%;
+  font-family: "Open Sans";
+}
+
+/* help vertically center the content_box */
+/* put the logo and links in nav_bar in 1 column */
+/* put the logo-less links in 1 row */
+.nav_bar {
+  padding: 0px 0px 10px 0px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.logoless_navbar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.nav_bar, .footer {
+  background-color: var(--blue-color);
+  font-family: "Fredericka the Great";
+}
+
+/* logo */
+.nav_bar a img {
+  width: 50%;
+}
+
+/* bullet-less lists */
+.content_box2 ul, .footer ul {
+  list-style: none;
+}
+
+/* links in nav_bar and footer */
+.nav_bar a, .nav_bar a:visited, .footer a, .footer a:visited {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.nav_bar a:hover, .footer a:hover {
+  color: var(--yellow-color);
+  font-weight: bold;
+}
+
+.nav_bar a:active, .footer a:active {
+  color: var(--blue-color);
+  background-color: var(--yellow-color);
+  font-weight: bold;
+}
+
+/* gradient background */
+.container {
+  background: linear-gradient(0deg, var(--teal-color) 0%, var(--sky-color) 50%), var(--white-color) 75%;
+}
+
+/* spacing between input elements in forms on login.html, create.html and update.html */
+.login_form div, .create_form div, .update_form div {
+  /* display: block; */
+  margin: 0px 0px 20px 0px;
+}
+
+/* white boxes on about.html and index.html */
+.content_box, .content_box1, .content_box2 {
+  border: 5px solid var(--blue-color);
+  margin: auto auto;
+  width: 80%;
+  height: 10%;
+  background: var(--white-color);
+  padding: 15px 25px;
+}
+
+/* main heading on each page */
+.content_box span, .content_box1 span, .content_box2 span {
   text-align: center;
+  color: var(--blue-color);
+  font-size: 2vw;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* "ADD NEW COMIC" button on admin.html */
+/* "Submit" button on create.html */
+/* "Submit" button on update.html */
+.add_comic, .create_form input[type=submit], .update_form input[type=submit] {
+  margin: 0px 35% 20px 35%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* buttons on admin.html */
+/* "DISPLAY MORE" button on index.html */
+/* "Submit" button on update.html */
+.add_comic, .admin_table tbody tr td:nth-child(3) button, .create_form input[type=submit], .content_box2 button, .update_form input[type=submit] {
+  background-color: var(--yellow-color);
+  color: var(--blue-color);
+  border-top: 2px solid var(--gray-color);
+  border-right: 2px solid var(--black-color);
+  border-bottom: 2px solid var(--black-color);
+  border-left: 2px solid var(--gray-color);
+}
+
+.admin_table tbody tr td:nth-child(2) button {
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  border-top: 2px solid var(--gray-color);
+  border-right: 2px solid var(--black-color);
+  border-bottom: 2px solid var(--black-color);
+  border-left: 2px solid var(--gray-color);
+}
+
+/* the table on admin.html */
+.admin_table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.admin_table, .admin_table td, .admin_table th {
+  border: 1px solid var(--blue-color);
+  padding: 5px 10px 5px 5px;
+}
+
+.admin_table tr:nth-child(even), .admin_table th {
+  background-color: var(--gray-color);
+}
+
+/* form on create.html */
+.create_form label, .update_form label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+}
+
+label[for=comic_synopsis] {
+  vertical-align: top;
+}
+
+/* 2nd content box on index.html */
+.content_box2 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.content_box2 a img {
+  width: 100%;
+  height: auto;
+}
+
+.content_box2 ul, .footer ul {
+  padding: 0px;
+  margin: 0;
+}
+
+/* Text on index.html */
+.comic_collection ul li {
+  color: var(--teal-color);
+}
+
+/* "Display" links on index.html */
+.comic_collection ul li a, .comic_collection ul li a:visited {
+  color: var(--blue-color);
+}
+
+.comic_collection ul li a:hover {
+  color: teal;
+  font-weight: bold;
+}
+
+.comic_collection ul li a:active {
+  color: var(--blue-color);
+  background-color: var(--yellow-color);
+  font-weight: bold;
+}
+
+/* "DISPLAY MORE" button index.html */
+.content_box2 button {
+  margin: 20px 0px;
+  width: 120px;
+}
+
+/* form on update.html */
+.update_form {
+  margin: 0 auto;
+  width: 70%;
+}
+
+/* labels and text fields on comic books on update.html and create.html */
+.update_form label, .create_form label {
+  width: 15vw;
+}
+
+.update_form input[type=text], .create_form input[type="text"], .update_form select, .create_form select {
+  width: 18vw;
+}
+
+/* login.html */
+.update_form, .create_form {
+  flex-flow: row wrap;
+  margin: 0;
+}
+
+/* email and password labels and text fields on login.html */
+.login_email label, .login_password label {
+  width: 15vw;
+}
+
+.login_email input[type=text], .login_password input[type=password] {
+  width: 20vw;
+}
+
+/* fun_home.html */
+.comic_background {
+  padding: 15px 0px;
+}
+
+.comic_card {
+  margin: 0 auto;
+  width: 60%;
+}
+
+/* rounded edges of comic card */
+.comic_card {
+  border-spacing: 1px;
+  border-collapse: separate;
+  border-radius: 25px;
+  border: 0;
+  box-shadow: 0 0 0 5px var(--yellow-color);
+  background-color: var(--blue-color);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.comic_title {
+  margin: 0 auto;
+  width: 50%;
+  color: var(--yellow-color);
+  text-align: center;
+  font-weight: bold;
+}
+
+.comic_title span:nth-child(2) {
+  display: block;
+}
+
+.comic_title, .comic_cover {
+  padding: 15px 0px;
+}
+
+.comic_cover {
+  margin: 0 auto;
+  width: 85%;
+}
+
+/* rounded edges of comic card's image */
+.comic_card img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--white-color);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+/* rounded edges of comic card's info */
+.comic_info {
+  padding: 20px;
+  background-color: var(--white-color);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.comic_info div {
+  padding: 0px 0px 10px 0px;
+}
+
+/* styled text of comic card's info */
+.comic_info span:nth-child(odd) {
+  text-decoration: underline;
+  color: var(--blue-color);
+  font-weight: bold;
+}
+
+.comic_info_title span:nth-child(2) {
+  font-style: italic;
+}
+
+/* footer */
+.footer {
+  border-top: 5px solid var(--yellow-color);
+  color: var(--white-color);
+  /* help verticallty center the content_box from the bottom */
+  margin: 30px 0px 0px 0px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer span {
+  color: var(--yellow-color);
+}
+
+/* 4 columns in the footer */
+.column {
+  text-align: center;
+  width: 25%;
+  padding: 1%;
+}
+
+/* CodeSquad logo */
+.footer a img {
+  width: 75%;
+  height: auto;
+}
+
+/* mobile devices */
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  /* links in nav_bar */
+  .logoless_navbar {
+      display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* menu icon in nav_bar */
+  .nav_bar i {
+      color: var(--white-color);
+      width: 100vw;
+      justify-self: flex-end;
+  }
+
+  /* table on admin.html */
+  .admin_table {
+      width: 36vw;
+      display: block;
+      max-width: -moz-fit-content;
+      max-width: fit-content;
+      margin: 0 auto;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+
+  .footer {
+      flex-flow: column wrap;
+      justify-content: center;
+  }
+
+  .column {
+      width: 100%;
+  }
+
+  /* forms on create.html, login.html and update.html */
+  /* textbox on create.html */
+  #comic_synopsis {
+      width: 10px;
+  }
+
+  /* section for each comic on index.html */
+  .comic_collection {
+      width: 100%;
+      padding: 0 0 25% 0;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* tablets */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* links and menu icon in nav_bar */
+  .logoless_navbar div, .nav_bar i {
+      display: none;
+  }
+
+  /* table on admin.html */
+  .admin_table {
+      width: 41vw;
   }
 }
 
-.card {
-  padding: 2em;
-}
+/* desktops */
+@media screen and (min-width: 1024px) {
+  /* menu icon in nav_bar */
+  .nav_bar i {
+      display: none;
+  }
 
-.read-the-docs {
-  color: #888;
+  /* comic cards on index.html */
+  .content_box2 {
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+  }
+
+  .content_box2 div:not(:last-child) {
+      width: 16vw;
+      height: auto;
+  }
+
+  /* table on admin.html */
+  .admin_table {
+      width: 42vw;
+  }
+
+  /* comic card on fun_home.html */
+  .comic_card {
+      display: flex;
+      width: 99%;
+  }
+
+  .comic_cover {
+      width: 400%;
+  }
+  
+  .comic_info {
+      width: 607%;
+      font-size: xx-small;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+  }
 }
