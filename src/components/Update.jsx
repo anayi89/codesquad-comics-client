@@ -6,8 +6,10 @@ function Update() {
     const [book, setBook] = useState(null)
 
     useEffect(() => {
-        const bookId = setBook(booksData.find((book) => book.id === id))
-        localStorage.setItem("Book ID", JSON.stringify(bookId));
+        const bookId = booksData.find((book) => book.id === id)
+        localStorage.setItem("Book ID", JSON.stringify(bookId))
+        const value = bookId
+        setBook((book) => ({ ...book, [book.id]: value }))
     }, [book])
 
     const [title, setTitle] = useState("")
