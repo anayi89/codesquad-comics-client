@@ -1,3 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const fa_icons = ["fa-brands fa-facebook", "fa-brands fa-square-instagram", "fa-brands fa-twitter"];
+
 function Footer() {
     return (
         <footer>
@@ -19,14 +23,14 @@ function Footer() {
                 <div className="column">
                     <span><h2>FOLLOW US</h2></span>
                     <ul>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-square-instagram"></i></a></li>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer"><i className="fa-brands fa-twitter"></i></a></li>
+                        {fa_icons.map((fa_icon, index) => (
+                            <li><FontAwesomeIcon key={index} icon={`${fa_icon}`} /></li>
+                        ))}
                     </ul>
                 </div>
                 <div className="column">
                     <span><h2>A PRODUCT OF</h2></span>
-                    <a href="#"  target="_blank" rel="noopener noreferrer"><img src="/public/images/CodeSquad-logo-a.png" /></a>
+                    <a href="#"  target="_blank" rel="noopener noreferrer"><img src="../public/images/CodeSquad-logo-a.png" /></a>
                 </div>
             </div>
         </footer>

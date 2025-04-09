@@ -11,17 +11,21 @@ import Header from './shared/Header'
 import Footer from './shared/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState("")
+
+  const handleUser = () => {
+    setUser(localStorage.setItem("user", user))
+  }
 
   return (
     <div className="App">
-      <Header />
+      <Header handleUser={[user, setUser]} />
       <About />
       <Admin />
       <Create />
       <Home />
-      <Login />
-      <Signup />
+      <Login handleUser={[user, setUser]} />
+      <Signup handleUser={[user, setUser]} />
       <Update />
       <Footer />
     </div>

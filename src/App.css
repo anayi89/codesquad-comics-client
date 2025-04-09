@@ -412,6 +412,11 @@ label[for=comic_synopsis] {
       height: auto;
   }
 
+  /* text on index.html */
+  .content_box p, .content_box ul li {
+    color: var(--blue-color);
+  }
+
   /* table on admin.html */
   .admin_table {
       width: 42vw;

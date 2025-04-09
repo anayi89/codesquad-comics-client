@@ -1,9 +1,19 @@
+import { useState } from 'react';
 import booksData from '../data/books';
 
 function Admin() {
+    const [book, setBook] = useState([])
+    
+    useEffect(() => {
+        const handleBook = (event) => {
+            setBook(booksData)
+        }
+        console.log(handleBook)
+    }, [])
+    
     return (
         <main>
-            <div className="content">
+            <div className="content" onload={handleBook}>
                 <div className="content_box">
                     <span><h1>ADMIN PAGE</h1></span>
                     <button className="add_comic">ADD NEW COMIC</button>
