@@ -1,19 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import booksData from '../data/books';
 
 function Admin() {
     const [book, setBook] = useState([])
     
     useEffect(() => {
-        const handleBook = (event) => {
-            setBook(booksData)
-        }
-        console.log(handleBook)
+        setBook(booksData)
     }, [])
     
     return (
         <main>
-            <div className="content" onload={handleBook}>
+            <div className="content">
                 <div className="content_box">
                     <span><h1>ADMIN PAGE</h1></span>
                     <button className="add_comic">ADD NEW COMIC</button>
@@ -26,7 +23,7 @@ function Admin() {
                         </thead>
                         <tbody>
                             {booksData.map((book) => 
-                                <tr>
+                                <tr key={book._id}>
                                     <td>{book.title}</td>
                                     <td><button>EDIT</button></td>
                                     <td><button>DELETE</button></td>
@@ -100,4 +97,4 @@ function Admin() {
     )
 }
 
-export default Admin;
+export default Admin

@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import booksData from '../data/books';
+import { useState, useEffect } from 'react';
+import books from '../data/books';
 
 function Home() {
-    const [book, setBook] = useState([])
+    const [myBooks, setMyBooks] = useState([])
+    const url = "https://course-project-codesquad-comics-server.onrender.com/api/books"
     
     useEffect(() => {
-        const handleBook = (event) => {
-            setBook(booksData)
-        }
-        console.log(handleBook)
-      }, [])
+        fetch(url)
+        .then((response) => response.json())
+        .then((result) => {
+            setMyBooks(result.data.books)
+            console.log(result.data.books)
+        })
+    }, [])
     
     return (
         <main>
@@ -18,9 +21,10 @@ function Home() {
                     <span><h1>COMICSQUAD COMICS</h1></span>
                     <p>CodeSquad Comics is a collection of graphic novels read by Iyana Garry. The site is intended to display comic book covers along with information about each book, including the author, a rating, and other details about the graphic novel. Browse through the complete collection below. Click on the cover image or the Details link to see even more information about each graphic novel including the publisher, genre, number of pages, and a brief synopsis. The About page includes meta-information about this collection. Login is only available to the site administrator at this time.</p>
                 </div>
-                <div className="content_box2" onload={handleBook}>
+                <div className="content_box2">
                     <span><h2>COMPLETE COLLECTION</h2></span>
-                    {booksData.map((book, index) => 
+                    {myBooks.map((book) =>(<p key={book._id}>{book.title}</p>))}
+                    {/* {booksData.map((book, index) => 
                         <div className="comic_collection" key={book.id}>
                             <a href="#"><img src={`../public/images/${book.imageUrl}`} /></a>
                             <ul key={index}>
@@ -30,7 +34,7 @@ function Home() {
                                 <li><a href="#">Details</a></li>
                             </ul>
                         </div>
-                    )}
+                    )} */}
                     {/* <div className="comic_collection">
                         <a href="#"><img src="public/images/fun-home.jpg" /></a>
                         <ul>
@@ -146,4 +150,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default Home

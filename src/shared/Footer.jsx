@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const fa_icons = ["fa-brands fa-facebook", "fa-brands fa-square-instagram", "fa-brands fa-twitter"];
+const fa_icons = ["fa-facebook", "fa-square-instagram", "fa-twitter"];
 
 function Footer() {
     return (
@@ -24,7 +24,7 @@ function Footer() {
                     <span><h2>FOLLOW US</h2></span>
                     <ul>
                         {fa_icons.map((fa_icon, index) => (
-                            <li><FontAwesomeIcon key={index} icon={`${fa_icon}`} /></li>
+                            <li><FontAwesomeIcon key={index} icon={["fa-brands", `${fa_icon}`]} /></li>
                         ))}
                     </ul>
                 </div>
