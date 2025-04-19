@@ -6,14 +6,17 @@ function Home() {
     const url = "https://course-project-codesquad-comics-server.onrender.com/api/books"
     
     useEffect(() => {
-        fetch(url)
+        fetch(url, {method: "GET"})
         .then((response) => response.json())
         .then((result) => {
             setMyBooks(result.data.books)
             console.log(result.data.books)
         })
-    }, [])
-    
+        .catch((error) =>{
+            console.error(error.message)
+        })
+    }, [myBooks])
+
     return (
         <main>
             <div className="content">
@@ -23,126 +26,17 @@ function Home() {
                 </div>
                 <div className="content_box2">
                     <span><h2>COMPLETE COLLECTION</h2></span>
-                    {myBooks.map((book) =>(<p key={book._id}>{book.title}</p>))}
-                    {/* {booksData.map((book, index) => 
+                    {myBooks.map((book, index) =>(
                         <div className="comic_collection" key={book.id}>
-                            <a href="#"><img src={`../public/images/${book.imageUrl}`} /></a>
+                            <a href="#"><img src={`../../public/images/${book.image}`} /></a>
                             <ul key={index}>
                                 <li>{book.title}</li>
                                 <li>by {book.author}</li>
                                 <li>{book.rating} stars</li>
-                                <li><a href="#">Details</a></li>
+                                <li><a href="/">Details</a></li>
                             </ul>
                         </div>
-                    )} */}
-                    {/* <div className="comic_collection">
-                        <a href="#"><img src="public/images/fun-home.jpg" /></a>
-                        <ul>
-                            <li>Fun Home: A Family Tragicomic</li>
-                            <li>by Alison Bechdel</li>
-                            <li>5 stars</li>
-                            <li><a href="fun_home.html">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/watchmen.jpg" /></a>
-                        <ul>
-                            <li>Watchmen</li>
-                            <li>by Alan Moore</li>
-                            <li>5 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/hunter-x-hunter.jpg" /></a>
-                        <ul>
-                            <li>Hunter X Hunter Vol. 1</li>
-                            <li>by Yoshiro Togashi</li>
-                            <li>5 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/lumberjanes.jpg" /></a>
-                        <ul>
-                            <li>Lumberjanes Vol. 1</li>
-                            <li>by Noelle Stevenson</li>
-                            <li>4 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/one-piece.jpg" /></a>
-                        <ul>
-                            <li>One Piece, Vol. 1: Romance Dawn</li>
-                            <li>by Eiichirio Oda</li>
-                            <li>5 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/wake.jpg" /></a>
-                        <ul>
-                            <li>Wake: The Hidden History of Women-Led Slave Revolts</li>
-                            <li>by Rebecca Hall</li>
-                            <li>4 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/black-panther.jpg" /></a>
-                        <ul>
-                            <li>Black Panther: A Nation Under Our Feet Book 1</li>
-                            <li>by Ta-Nehisi Coates</li>
-                            <li>3 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/the-walking-dead.jpg" /></a>
-                        <ul>
-                            <li>The Walking Dead, Vol. 1: Days Gone Bye</li>
-                            <li>by Robert Kirkman</li>
-                            <li>4 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/march.jpg" /></a>
-                        <ul>
-                            <li>March: Book One</li>
-                            <li>by John Lewis</li>
-                            <li>5 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/batman.jpg" /></a>
-                        <ul>
-                            <li>Batman: The Dark Knight Returns</li>
-                            <li>by Frank Miller</li>
-                            <li>3 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/queer.jpg" /></a>
-                        <ul>
-                            <li>Queer: A Graphic History</li>
-                            <li>by Meg-John Barker</li>
-                            <li>4 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div>
-                    <div className="comic_collection">
-                        <a href="#"><img src="public/images/parable-of-the-sower.jpg" /></a>
-                        <ul>
-                            <li>Parable of the Sower</li>
-                            <li>by Octavia E. Butler</li>
-                            <li>4 stars</li>
-                            <li><a href="#">Details</a></li>
-                        </ul>
-                    </div> */}
+                    ))}
                     <button>DISPLAY MORE</button>
                 </div>
             </div>

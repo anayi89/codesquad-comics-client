@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './shared/Header'
 import Home from './components/Home'
@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <Header />
         <Routes>
-          <Route path="/index" index element={<Home />} />
+          <Route path="/" index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/create" element={<Create />} />

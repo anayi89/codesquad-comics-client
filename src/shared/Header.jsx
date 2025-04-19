@@ -7,7 +7,7 @@ function Header({ name }) {
             </div>
             <div className="logoless_navbar">
                 <div className="nav_bar_home">
-                    <a href="/index">HOME</a>
+                    <a href="/">HOME</a>
                 </div>
                 <div className="nav_bar_about">
                     <a href="/about">ABOUT</a>

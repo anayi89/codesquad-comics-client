@@ -93,6 +93,16 @@ body {
   font-size: 2vw;
 }
 
+/* content in first div on Home.jsx */
+.content_box1 p {
+  color: var(--blue-color);
+}
+
+/* form labels on Login.jsx and Signup.jsx */
+div label {
+  color: var(--blue-color);
+}
+
 /* "ADD NEW COMIC" button on admin.html */
 /* "Submit" button on create.html */
 /* "Submit" button on update.html */
@@ -134,6 +144,10 @@ body {
 
 .admin_table tr:nth-child(even), .admin_table th {
   background-color: var(--gray-color);
+}
+
+.admin_table tr:nth-child(odd) {
+  color: var(--blue-color);
 }
 
 /* form on create.html */
@@ -213,12 +227,12 @@ label[for=comic_synopsis] {
   margin: 0;
 }
 
-/* email and password labels and text fields on login.html */
-.login_email label, .login_password label {
+/* labels and text fields on Login.jsx and Signup.jsx */
+.first_name label, .last_name label, .login_email label, .login_password label {
   width: 15vw;
 }
 
-.login_email input[type=text], .login_password input[type=password] {
+.first_name input[type=text], .last_name input[type=text], .login_email input[type=text], .login_password input[type=password] {
   width: 20vw;
 }
 

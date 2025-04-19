@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Create() {
+    const navigate = useNavigate()
+    const url = "https://course-project-codesquad-comics-server.onrender.com/api/books"
+
     const [formData, setFormData] = useState({
         title: "",
         author: "",
@@ -11,6 +15,30 @@ function Create() {
     })
     const [errorMessage, setErrorMessage] = useState("")
 
+    const body = {
+        title: e.target.title.value,
+        author: e.target.author.value,
+        publisher: e.target.publisher.value,
+        genre: e.target.genre.value,
+        pages: e.target.pages.value,
+        rating: e.target.rating.value,
+        synopsis: e.target.synopsis.value
+    }
+
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(body)
+    })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            navigate("/admin")
+        })
+        .catch(error => {
+            setErrorMessage(error.message)
+            console.log(error.message)
+     })
+    
     const handleChange = (event) => {
         let value = event.target.value
         const name = event.target.name

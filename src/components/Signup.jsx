@@ -15,7 +15,7 @@ function Signup({ user }) {
                         <form>
                             <div className="first_name">
                                 <label htmlFor="first_name">First Name:</label>
-                                <input type="text" id="first_name" name="first_name" defaultValue="FirstName" required />
+                                <input type="text" id="first_name" name="first_name" defaultValue="First Name" required />
                             </div>
                             <div className="last_name">
                                 <label htmlFor="last_name">Last Name:</label>

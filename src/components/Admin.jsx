@@ -1,12 +1,45 @@
-import { useState, useEffect } from 'react';
-import booksData from '../data/books';
+import { useState, useEffect } from 'react'
+import books from '../data/books'
+import { Link } from 'react-router-dom'
 
 function Admin() {
-    const [book, setBook] = useState([])
+    const [readbook, setReadBook] = useState([])
+    const [deletedbook, setDeletedBook] = useState([])
+    const [errorMessage, setErrorMessage] = useState("")
+    const url = "https://course-project-codesquad-comics-server.onrender.com/api/books"
     
     useEffect(() => {
-        setBook(booksData)
-    }, [])
+        fetch(url, {method: "GET"})
+        .then((response) => response.json())
+        .then((result) => {
+            setReadBook(result.data.books)
+            console.log(result.data.books)
+        })
+        .catch(error => {
+            console.log(error)
+            setErrorMessage(error.message)
+        })
+    }, [readbook])
+
+    const handleDeletedBook = () => {
+        const bookId = books.find((book) => book._id === id)
+        let id = bookId
+
+        console.log("bookId: ", bookId)
+        console.log("id: ", id)
+        console.log("book: ", book)
+        
+        fetch(`${url}/${id}`, {method: "DELETE"})
+            .then((response) => response.json())
+            .then((result) => {
+                setDeletedBook((book) => ({ ...bookId, [bookId._id]: id._id }))
+                console.log(result.data.books)
+            })
+            .catch(error => {
+                console.log(error)
+                setErrorMessage(error.message)
+            })
+    }
     
     return (
         <main>
@@ -22,73 +55,14 @@ function Admin() {
                             </tr>
                         </thead>
                         <tbody>
-                            {booksData.map((book) => 
+                            {books.map((book) => 
                                 <tr key={book._id}>
                                     <td>{book.title}</td>
-                                    <td><button>EDIT</button></td>
-                                    <td><button>DELETE</button></td>
+                                    <td><Link to="/update"><button>EDIT</button></Link></td>
+                                    <td><button onClick={handleDeletedBook}>DELETE</button></td>
+                                    {errorMessage && <p>{setErrorMessage}</p>}
                                 </tr>
                             )}
-                            {/* <tr>
-                                <td>Batman: The Dark Man Returns</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Black Panther: A Nation Under Our Feet Book 1</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Fun Home: A Family Tragicomic</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Hunter X Hunter Vol. 1</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Lumberjanes Vol. 1</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>March: Book One</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>One Piece, Vol. 1: Romance Dawn</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Parable of the Sower</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Queer: A Graphic History</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>The Walking Dead, Vol. 1: Days Gone Bye</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Wake: The Hidden History of Women-Led Slave Revolts</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr>
-                            <tr>
-                                <td>Watchmen</td>
-                                <td><button>EDIT</button></td>
-                                <td><button>DELETE</button></td>
-                            </tr> */}
                         </tbody>
                     </table>
                 </div>
