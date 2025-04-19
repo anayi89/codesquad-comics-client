@@ -18,8 +18,8 @@ function Home() {
                 </div>
                 <div className="content_box2" onLoad={setBooks}>
                     <span><h2>COMPLETE COLLECTION</h2></span>
-                    {books.map((book, index) =>(
-                        <div className="comic_collection" key={book.id}>
+                    {books.map((book) =>(
+                        <div className="comic_collection" key={book._id}>
                             <a href="#"><img src={`../../public/images/${book.imageUrl}`} /></a>
                             <ul>
                                 <li>{book.title}</li>

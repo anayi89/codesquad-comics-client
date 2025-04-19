@@ -2,7 +2,8 @@ function Login({ user }) {
     const submitForm = (e) => {
         e.preventDefault()
         console.log("This method has been run.")
-        // console.log(user.email)
+        console.log(e.target.email.value)
+        console.log(e.target.password.value)
     }
 
     return (
@@ -14,7 +15,7 @@ function Login({ user }) {
                         <form onSubmit={submitForm}>
                             <div className="login_email">
                                 <label htmlFor="email_address">Email address:</label>
-                                <input type="text" id="email_address" name="email_address" defaultValue="Email address" /*{user.email}*/ required />
+                                <input type="text" id="email_address" name="email_address" defaultValue={e.target.email.value} required />
                             </div>
                             <div className="login_password">
                                 <label htmlFor="password">Password:</label>
