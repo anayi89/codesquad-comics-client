@@ -385,7 +385,8 @@ label[for=comic_synopsis] {
   /* forms on create.html, login.html and update.html */
   /* textbox on create.html */
   #comic_synopsis {
-      width: 10px;
+      width: 18vw;
+      height: 59px;
   }
 
   /* section for each comic on index.html */

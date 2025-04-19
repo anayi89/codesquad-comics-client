@@ -14,34 +14,10 @@ function Create() {
         synopsis: ""
     })
     const [errorMessage, setErrorMessage] = useState("")
-
-    const body = {
-        title: e.target.title.value,
-        author: e.target.author.value,
-        publisher: e.target.publisher.value,
-        genre: e.target.genre.value,
-        pages: e.target.pages.value,
-        rating: e.target.rating.value,
-        synopsis: e.target.synopsis.value
-    }
-
-    fetch(url, {
-        method: "POST",
-        body: JSON.stringify(body)
-    })
-        .then((response) => response.json())
-        .then((result) => {
-            console.log(result)
-            navigate("/admin")
-        })
-        .catch(error => {
-            setErrorMessage(error.message)
-            console.log(error.message)
-     })
     
-    const handleChange = (event) => {
-        let value = event.target.value
-        const name = event.target.name
+    const handleChange = (e) => {
+        let value = e.target.value
+        const name = e.target.name
 
         if (name === "comic_pages" || name === "comic_rating") {
             value = parseInt(value)
@@ -55,8 +31,36 @@ function Create() {
         }))
     }
 
-    const handleFormData = (event) => {
-        event.preventDefault()
+    const handleFormData = (e) => {
+        e.preventDefault()
+
+        const body = {
+            title: e.target.title.value,
+            author: e.target.author.value,
+            publisher: e.target.publisher.value,
+            genre: e.target.genre.value,
+            pages: e.target.pages.value,
+            rating: e.target.rating.value,
+            synopsis: e.target.synopsis.value
+        }
+
+        console.log(body)
+
+        fetch(`${url}/create`, {
+            method: "POST",
+            body: JSON.stringify(body)
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result)
+                localStorage.setItem("user", JSON.stringify(body));
+                navigate("/admin")
+            })
+            .catch(error => {
+                console.log(error)
+                setErrorMessage(error.message)
+            })
+
         console.log("This form has been submitted.")
         console.log(formData)
 
@@ -122,8 +126,7 @@ function Create() {
                             </div>
                             
                             <input type="submit" defaultValue="Submit" />
-                            {errorMessage && <p>{setErrorMessage}</p>}
-                        </form>
+                        </form> : {errorMessage && <p>{setErrorMessage}</p>}
                     </div>
                 </div>
             </div>

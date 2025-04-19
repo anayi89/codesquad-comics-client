@@ -29,7 +29,7 @@ function Admin() {
         console.log("id: ", id)
         console.log("book: ", book)
         
-        fetch(`${url}/${id}`, {method: "DELETE"})
+        fetch(`${url}`.split("books/")[0]`/delete/${id}`, {method: "DELETE"})
             .then((response) => response.json())
             .then((result) => {
                 setDeletedBook((book) => ({ ...bookId, [bookId._id]: id._id }))
@@ -60,9 +60,8 @@ function Admin() {
                                     <td>{book.title}</td>
                                     <td><Link to="/update"><button>EDIT</button></Link></td>
                                     <td><button onClick={handleDeletedBook}>DELETE</button></td>
-                                    {errorMessage && <p>{setErrorMessage}</p>}
                                 </tr>
-                            )}
+                            )} : {errorMessage && <p>{setErrorMessage}</p>}
                         </tbody>
                     </table>
                 </div>

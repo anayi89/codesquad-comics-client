@@ -3,8 +3,9 @@ import books from '../data/books';
 
 function Home() {
     const [myBooks, setMyBooks] = useState([])
+
     const url = "https://course-project-codesquad-comics-server.onrender.com/api/books"
-    
+
     useEffect(() => {
         fetch(url, {method: "GET"})
         .then((response) => response.json())
