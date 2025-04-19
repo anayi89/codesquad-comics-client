@@ -32,7 +32,7 @@ function Create() {
                 <div className="content_box">
                     <span><h1>CREATE NEW COMIC</h1></span>
                     <div className="create_form">
-                        <form>
+                        <form onSubmit={submitForm}>
                             <div className="create_title">
                                 <label htmlFor="comic_title">Title:</label>
                                 <input type="text" id="comic_title" name="comic_title" defaultValue={title} onChange={updateTitle} required />
@@ -69,7 +69,7 @@ function Create() {
                                 <label htmlFor="comic_synopsis">Synopsis:</label><textarea id="comic_synopsis" defaultValue={synopsis} name="comic_synopsis" onChange={updateSynopsis} required></textarea>
                             </div>
                             
-                            <input type="submit" defaultValue="Submit" onSubmit={submitForm} />
+                            <input type="submit" defaultValue="Submit" />
                         </form>
                     </div>
                 </div>

@@ -20,8 +20,8 @@ function Home() {
                     <span><h2>COMPLETE COLLECTION</h2></span>
                     {books.map((book, index) =>(
                         <div className="comic_collection" key={book.id}>
-                            <a href="#"><img src={`../../public/images/${book.image}`} /></a>
-                            <ul key={index}>
+                            <a href="#"><img src={`../../public/images/${book.imageUrl}`} /></a>
+                            <ul>
                                 <li>{book.title}</li>
                                 <li>by {book.author}</li>
                                 <li>{book.rating} stars</li>

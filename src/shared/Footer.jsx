@@ -15,9 +15,9 @@ function Footer() {
                 <div className="column">
                     <span><h2>LINKS</h2></span>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/login">Login</a></li>
                     </ul>
                 </div>
                 <div className="column">

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import booksData from '../data/books';
+import { useEffect, useState } from 'react'
+import booksData from '../data/books'
 const id = booksData[0]._id
 
 function Update() {
@@ -7,9 +7,9 @@ function Update() {
 
     useEffect(() => {
         const bookId = booksData.find((book) => book._id === id)
-        console.log("bookId: ", bookId)
+        console.log("bookId: ", bookId._id)
         localStorage.setItem("Book ID", JSON.stringify(bookId))
-        const value = bookId
+        const value = bookId._id
         console.log("value: ", value)
         setBook((book) => ({ ...bookId, [bookId._id]: value._id }))
         console.log("book: ", book)
@@ -46,7 +46,7 @@ function Update() {
                 <div className="content_box">
                     <span><h1>UPDATE COMIC</h1></span>
                     <div className="update_form">
-                        <form>
+                        <form onSubmit={submitForm}>
                             <div className="update_title">
                                 <label htmlFor="comic_title">Title:</label><input type="text" id="comic_title" name="comic_title" defaultValue={title} onChange={updateTitle} required></input>
                             </div>
@@ -81,7 +81,7 @@ function Update() {
                                 <label htmlFor="comic_synopsis">Synopsis:</label><textarea id="comic_synopsis" defaultValue={synopsis} name="comic_synopsis" rows="10" cols="32" onChange={updateSynopsis} required></textarea>
                             </div>
                             
-                            <input type="submit" defaultValue="Submit" onSubmit={submitForm}></input>
+                            <input type="submit" defaultValue="Submit"></input>
                         </form>
                     </div>
                 </div>

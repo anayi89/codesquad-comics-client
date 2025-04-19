@@ -3,17 +3,17 @@ function Header({ name }) {
         <header>
             <div className="nav_bar">
             <div className="logo">
-                <a href="#"><img src="../public/images/CodeSquad-Comics-logo.jpg" /></a>
+                <a href="/"><img src="../public/images/CodeSquad-Comics-logo.jpg" /></a>
             </div>
             <div className="logoless_navbar">
                 <div className="nav_bar_home">
-                    <a href="#">HOME</a>
+                    <a href="/">HOME</a>
                 </div>
                 <div className="nav_bar_about">
-                    <a href="#">ABOUT</a>
+                    <a href="/about">ABOUT</a>
                 </div>
                 <div className="nav_bar_login">
-                    <a href="#">LOGIN</a>
+                    <a href="/login">LOGIN</a>
                 </div>
                 <div>
                     {name}

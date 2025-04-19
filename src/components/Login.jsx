@@ -11,7 +11,7 @@ function Login({ user }) {
                 <div className="content_box">
                     <span><h1>LOGIN</h1></span>
                     <div className="create_form">
-                        <form>
+                        <form onSubmit={submitForm}>
                             <div className="login_email">
                                 <label htmlFor="email_address">Email address:</label>
                                 <input type="text" id="email_address" name="email_address" defaultValue="Email address" /*{user.email}*/ required />
@@ -20,7 +20,7 @@ function Login({ user }) {
                                 <label htmlFor="password">Password:</label>
                                 <input type="password" id="password" name="password" required />
                             </div>
-                            <input type="submit" defaultValue="Submit" onSubmit={submitForm} />
+                            <input type="submit" defaultValue="Submit" />
                         </form>
                     </div>
                 </div>

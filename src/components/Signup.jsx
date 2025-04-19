@@ -1,9 +1,7 @@
 function Signup({ user }) {
     const submitForm = (e) => {
+        e.preventDefault()
         console.log("This method has been run.")
-        // console.log(user.firstName)
-        // console.log(user.lastName)
-        // console.log(user.email)
     }
 
     return (
@@ -12,7 +10,7 @@ function Signup({ user }) {
                 <div className="content_box">
                     <span><h1>SIGN UP</h1></span>
                     <div className="create_form">
-                        <form>
+                        <form onSubmit={submitForm}>
                             <div className="first_name">
                                 <label htmlFor="first_name">First Name:</label>
                                 <input type="text" id="first_name" name="first_name" defaultValue="First Name"/*{user.firstName}*/ required />
@@ -29,7 +27,7 @@ function Signup({ user }) {
                                 <label htmlFor="password">Password:</label>
                                 <input type="password" id="password" name="password" required />
                             </div>
-                            <input type="submit" defaultValue="Submit" onSubmit={submitForm} />
+                            <input type="submit" defaultValue="Submit" />
                         </form>
                     </div>
                 </div>
