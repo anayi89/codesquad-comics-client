@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import booksData from '../data/books';
-const id = booksData[0].id
+const id = booksData[0]._id
 
 function Update() {
     const [book, setBook] = useState(null)
 
     useEffect(() => {
-        const bookId = booksData.find((book) => book.id === id)
+        const bookId = booksData.find((book) => book._id === id)
+        console.log("bookId: ", bookId)
         localStorage.setItem("Book ID", JSON.stringify(bookId))
         const value = bookId
-        setBook((book) => ({ ...book, [book.id]: value }))
+        console.log("value: ", value)
+        setBook((book) => ({ ...bookId, [bookId._id]: value._id }))
+        console.log("book: ", book)
     }, [book])
 
     const [title, setTitle] = useState("")
@@ -45,40 +48,40 @@ function Update() {
                     <div className="update_form">
                         <form>
                             <div className="update_title">
-                                <label htmlFor="comic_title">Title:</label><LabelInput type="text" id="comic_title" name="comic_title" value={title} onChange={updateTitle} required></LabelInput>
+                                <label htmlFor="comic_title">Title:</label><input type="text" id="comic_title" name="comic_title" defaultValue={title} onChange={updateTitle} required></input>
                             </div>
                             <div className="update_author">
-                                <label htmlFor="comic_author">Author:</label><LabelInput type="text" id="comic_author" name="comic_author" value={author} onChange={updateAuthor} required></LabelInput>
+                                <label htmlFor="comic_author">Author:</label><input type="text" id="comic_author" name="comic_author" defaultValue={author} onChange={updateAuthor} required></input>
                             </div>
                             <div className="update_publisher">
                                 <label htmlFor="comic_publisher">Publisher:</label>
-                                <select id="comic_publisher" name="comic_publisher" required>
-                                <option value="boom_box">BOOM! Box</option>
-                                <option value="dc_comics">DC Comics</option>
-                                <option value="harry_n_abrams">Harry N. Abrams</option>
-                                <option value="icon_books">Icon Books</option>
-                                <option value="image_comics">Image Comics</option>
-                                <option value="marvel">Marvel</option>
-                                <option value="simon_schuster">Simon & Schuster</option>
-                                <option value="top_shelf_prod">Top Shelf Productions</option>
-                                <option value="viz_media_llc">VIZ Media LLC</option>
-                                <option selected value="publisher_update">publisher value stored in the database</option>
+                                <select id="comic_publisher" defaultValue="publisher_update" name="comic_publisher" required>
+                                    <option defaultValue="boom_box">BOOM! Box</option>
+                                    <option defaultValue="dc_comics">DC Comics</option>
+                                    <option defaultValue="harry_n_abrams">Harry N. Abrams</option>
+                                    <option defaultValue="icon_books">Icon Books</option>
+                                    <option defaultValue="image_comics">Image Comics</option>
+                                    <option defaultValue="marvel">Marvel</option>
+                                    <option defaultValue="simon_schuster">Simon & Schuster</option>
+                                    <option defaultValue="top_shelf_prod">Top Shelf Productions</option>
+                                    <option defaultValue="viz_media_llc">VIZ Media LLC</option>
+                                    <option defaultValue="publisher_update">publisher value stored in the database</option>
                                 </select>
                             </div>
                             <div className="update_genre">
-                                <label htmlFor="comic_genre">Genre:</label><LabelInput type="text" id="comic_genre" name="comic_genre" value={genre} onChange={updateGenre} required></LabelInput>
+                                <label htmlFor="comic_genre">Genre:</label><input type="text" id="comic_genre" name="comic_genre" defaultValue={genre} onChange={updateGenre} required></input>
                             </div>
                             <div className="update_pages">
-                                <label htmlFor="comic_pages">Number of pages:</label><LabelInput type="text" id="comic_pages" name="comic_pages" value={pages} onChange={updatePages} required></LabelInput>
+                                <label htmlFor="comic_pages">Number of pages:</label><input type="text" id="comic_pages" name="comic_pages" defaultValue={pages} onChange={updatePages} required></input>
                             </div>
                             <div className="update_rating">
-                                <label htmlFor="comic_rating">Rating:</label><LabelInput type="text" id="comic_rating" name="comic_rating" size="4" value={rating} onChange={updateRating} required ></LabelInput>
+                                <label htmlFor="comic_rating">Rating:</label><input type="text" id="comic_rating" name="comic_rating" size="4" defaultValue={rating} onChange={updateRating} required ></input>
                             </div>
                             <div className="update_synopsis">
-                                <label htmlFor="comic_synopsis">Synopsis:</label><textarea id="comic_synopsis" name="comic_synopsis" rows="10" cols="32" onChange={updateSynopsis} required>{synopsis}</textarea>
+                                <label htmlFor="comic_synopsis">Synopsis:</label><textarea id="comic_synopsis" defaultValue={synopsis} name="comic_synopsis" rows="10" cols="32" onChange={updateSynopsis} required></textarea>
                             </div>
                             
-                            <LabelInput type="submit" value="Submit" onSubmit={submitForm}></LabelInput>
+                            <input type="submit" defaultValue="Submit" onSubmit={submitForm}></input>
                         </form>
                     </div>
                 </div>
