@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import books from '../data/books';
 
 function Home() {
     const [myBooks, setMyBooks] = useState([])
