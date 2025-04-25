@@ -23,8 +23,7 @@ function Footer() {
                 <div className="column">
                     <span><h2>FOLLOW US</h2></span>
                     <ul>
-                        <li key="1"><a target="_blank"
-            rel="noopener noreferrer" href="https://www.facebook.com/CodeSquadOrg/"><FontAwesomeIcon icon={faFacebook} /></a></li>
+                        <li key="1"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/CodeSquadOrg/"><FontAwesomeIcon icon={faFacebook} /></a></li>
                         <li key="2"><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/codesquadpix/"><FontAwesomeIcon icon={faInstagram} /></a></li>
                         <li key="3"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/codesquad.org"><FontAwesomeIcon icon={faLinkedin} /></a></li>
                     </ul>

@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
-import booksData from '../data/books';
-const id = booksData[0]._id
+import { useEffect, useState } from 'react'
+import booksData from '../data/books'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function Update() {
+    url = "https://course-project-codesquad-comics-server.onrender.com/api/books/"
+    const { bookId } = useParams()
+    const id = booksData[0]._id
     const [book, setBook] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const bookId = booksData.find((book) => book._id === id)
@@ -13,7 +17,18 @@ function Update() {
         console.log("value: ", value)
         setBook((book) => ({ ...bookId, [bookId._id]: value._id }))
         console.log("book: ", book)
-    }, [book])
+
+        console.log("bookId: ", bookId)
+        fetch(`${url}${bookId}`, {method: "GET"})
+            .then((response) => response.json())
+            .then((result) => {
+                setMyBooks(result.data.books)
+                console.log(result.data.books)
+            })
+            .catch((error) =>{
+                console.error(error.message)
+            })
+    }, [])
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
@@ -40,22 +55,51 @@ function Update() {
         console.log(synopsis)
     }
 
+    const handleFormData = (e) => {
+        e.preventDefault()
+        const body = {
+            comicTitle: e.target.comic_title.value,
+            comicAuthor: e.target.comic_author.value,
+            comicPublisher: e.target.comic_publisher.value,
+            comicGenre: e.target.comic_genre.value,
+            comicPages: e.target.comic_pages.value,
+            comicRating: e.target.comic_rating.value,
+            comicSynopsis: e.target.comic_synopsis.value
+        }
+        console.log(body)
+
+        fetch(`${url}${bookId}`, {
+            method: "POST",
+            body: JSON.stringify(body)
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result)
+                localStorage.setItem("user", JSON.stringify(body));
+                navigate("/admin")
+            })
+            .catch(error => {
+                console.log(error)
+                setErrorMessage(error.message)
+            })
+    }
+
     return (
         <main>
             <div className="content">
                 <div className="content_box">
                     <span><h1>UPDATE COMIC</h1></span>
                     <div className="update_form">
-                        <form>
+                        <form onSubmit={submitForm}>
                             <div className="update_title">
-                                <label htmlFor="comic_title">Title:</label><input type="text" id="comic_title" name="comic_title" defaultValue={title} onChange={updateTitle} required></input>
+                                <label htmlFor="comic_title">Title:</label><input type="text" id="comic_title" name="comic_title" defaultValue={(e) => this.handleFormData(comicTitle, e)} onChange={updateTitle} required></input>
                             </div>
                             <div className="update_author">
-                                <label htmlFor="comic_author">Author:</label><input type="text" id="comic_author" name="comic_author" defaultValue={author} onChange={updateAuthor} required></input>
+                                <label htmlFor="comic_author">Author:</label><input type="text" id="comic_author" name="comic_author" defaultValue={(e) => this.handleFormData(comicAuthor, e)} onChange={updateAuthor} required></input>
                             </div>
                             <div className="update_publisher">
                                 <label htmlFor="comic_publisher">Publisher:</label>
-                                <select id="comic_publisher" name="comic_publisher" defaultValue="publisher_update" required>
+                                <select id="comic_publisher" name="comic_publisher" defaultValue={(e) => this.handleFormData(comicPublisher, e)} required>
                                 <option defaultValue="boom_box">BOOM! Box</option>
                                 <option defaultValue="dc_comics">DC Comics</option>
                                 <option defaultValue="harry_n_abrams">Harry N. Abrams</option>
@@ -69,19 +113,19 @@ function Update() {
                                 </select>
                             </div>
                             <div className="update_genre">
-                                <label htmlFor="comic_genre">Genre:</label><input type="text" id="comic_genre" name="comic_genre" defaultValue={genre} onChange={updateGenre} required></input>
+                                <label htmlFor="comic_genre">Genre:</label><input type="text" id="comic_genre" name="comic_genre" defaultValue={(e) => this.handleFormData(comicGenre, e)} onChange={updateGenre} required></input>
                             </div>
                             <div className="update_pages">
-                                <label htmlFor="comic_pages">Number of pages:</label><input type="text" id="comic_pages" name="comic_pages" defaultValue={pages} onChange={updatePages} required></input>
+                                <label htmlFor="comic_pages">Number of pages:</label><input type="text" id="comic_pages" name="comic_pages" defaultValue={(e) => this.handleFormData(comicPages, e)} onChange={updatePages} required></input>
                             </div>
                             <div className="update_rating">
-                                <label htmlFor="comic_rating">Rating:</label><input type="text" id="comic_rating" name="comic_rating" size="4" defaultValue={rating} onChange={updateRating} required ></input>
+                                <label htmlFor="comic_rating">Rating:</label><input type="text" id="comic_rating" name="comic_rating" size="4" defaultValue={(e) => this.handleFormData(comicRating, e)} onChange={updateRating} required ></input>
                             </div>
                             <div className="update_synopsis">
-                                <label htmlFor="comic_synopsis">Synopsis:</label><textarea id="comic_synopsis" name="comic_synopsis" rows="10" cols="32" defaultValue={synopsis} onChange={updateSynopsis} required></textarea>
+                                <label htmlFor="comic_synopsis">Synopsis:</label><textarea id="comic_synopsis" name="comic_synopsis" rows="10" cols="32" defaultValue={(e) => this.handleFormData(comicSynopsis, e)} onChange={updateSynopsis} required></textarea>
                             </div>
                             
-                            <label type="submit" defaultValue="Submit" onSubmit={submitForm}></label>
+                            <label type="submit" defaultValue="Submit"></label>
                         </form>
                     </div>
                 </div>

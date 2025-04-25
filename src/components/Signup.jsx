@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
     const [ user, setUser ] = useState()
     const [ errorMessage, setErrorMessage ] = useState("")
-    const url = "https://course-project-codesquad-comics-server.onrender.com/login/local"
+    const url = "https://course-project-codesquad-comics-server.onrender.com/signup"
+    const navigate = useNavigate()
 
     const submitForm = (e) => {
         console.log("This method has been run.")

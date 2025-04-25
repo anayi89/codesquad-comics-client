@@ -15,7 +15,7 @@ function Home() {
         .catch((error) =>{
             console.error(error.message)
         })
-    }, [myBooks])
+    }, [])
 
     return (
         <main>
