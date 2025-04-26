@@ -86,6 +86,19 @@ body {
   padding: 15px 25px;
 }
 
+.update div:not(:nth-child(7)) {
+  width: 55vh;
+}
+
+textarea {
+  background-color: var(--white-color);
+  width: 30vh;
+}
+
+.update_synopsis {
+  width: 60vh;
+}
+
 /* main heading on each page */
 .content_box span, .content_box1 span, .content_box2 span {
   text-align: center;
@@ -219,6 +232,7 @@ label[for=comic_synopsis] {
 
 .update_form input[type=text], .create_form input[type="text"], .update_form select, .create_form select {
   width: 18vw;
+  background-color: var(--white-color);
 }
 
 /* login.html */
@@ -234,6 +248,8 @@ label[for=comic_synopsis] {
 
 .first_name input[type=text], .last_name input[type=text], .login_email input[type=text], .login_password input[type=password] {
   width: 20vw;
+  background-color: var(--white-color);
+  color: var(--black-color);
 }
 
 /* fun_home.html */

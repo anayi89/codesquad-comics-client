@@ -3,7 +3,7 @@ import booksData from '../data/books'
 import { useParams, useNavigate } from 'react-router-dom'
 
 function Update() {
-    url = "https://course-project-codesquad-comics-server.onrender.com/api/books/"
+    const url = "https://course-project-codesquad-comics-server.onrender.com/api/books/"
     const { bookId } = useParams()
     const id = booksData[0]._id
     const [book, setBook] = useState(null)
