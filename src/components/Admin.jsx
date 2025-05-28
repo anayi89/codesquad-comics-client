@@ -7,7 +7,7 @@ function Admin() {
     useEffect(() => {
         setBooks(booksData)
         console.log(setBooks)
-    }, [books])
+    }, [])
     
     return (
         <main>

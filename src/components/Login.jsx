@@ -1,8 +1,10 @@
-function Login({ user }) {
+function Login(/*{ user, setUser }*/) {
+    const { user, setUser } = this.props
+    
     const submitForm = (e) => {
         e.preventDefault()
         console.log("This method has been run.")
-        console.log(e.target.email.value)
+        console.log(e.target.email_address.value)
         console.log(e.target.password.value)
     }
 
@@ -15,7 +17,7 @@ function Login({ user }) {
                         <form onSubmit={submitForm}>
                             <div className="login_email">
                                 <label htmlFor="email_address">Email address:</label>
-                                <input type="text" id="email_address" name="email_address" defaultValue={e.target.email.value} required />
+                                <input type="text" id="email_address" name="email_address" defaultValue={e.target.email_address.value} required />
                             </div>
                             <div className="login_password">
                                 <label htmlFor="password">Password:</label>
@@ -30,4 +32,4 @@ function Login({ user }) {
     )
 }
 
-export default Login;
+export default Login

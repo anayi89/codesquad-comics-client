@@ -3,11 +3,11 @@ import booksData from '../data/books'
 
 function Home() {
     const [books, setBooks] = useState([])
-    
+
     useEffect(() => {
         setBooks(booksData)
         console.log(setBooks)
-    }, [books])
+    }, [])
     
     return (
         <main>
@@ -18,9 +18,9 @@ function Home() {
                 </div>
                 <div className="content_box2" onLoad={setBooks}>
                     <span><h2>COMPLETE COLLECTION</h2></span>
-                    {books.map((book) =>(
+                    {booksData.map((book) =>(
                         <div className="comic_collection" key={book._id}>
-                            <a href="#"><img src={`../../public/images/${book.imageUrl}`} /></a>
+                            <a href="#"><img src={`../../images/${book.imageUrl}`} /></a>
                             <ul>
                                 <li>{book.title}</li>
                                 <li>by {book.author}</li>

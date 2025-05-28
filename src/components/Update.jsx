@@ -3,7 +3,7 @@ import booksData from '../data/books'
 const id = booksData[0]._id
 
 function Update() {
-    const [book, setBook] = useState(null)
+    const [book, setBook] = useState()
 
     useEffect(() => {
         const bookId = booksData.find((book) => book._id === id)
@@ -11,7 +11,7 @@ function Update() {
         localStorage.setItem("Book ID", JSON.stringify(bookId))
         setBook(bookId)
         console.log("bookId: ", bookId)
-    }, [book])
+    }, [])
 
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")

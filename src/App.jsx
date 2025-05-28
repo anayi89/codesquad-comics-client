@@ -11,8 +11,8 @@ import Header from './shared/Header'
 import Footer from './shared/Footer'
 import './App.css'
 
-function App() {
-  const [user, setUser] = useState("")
+function App({user, setUser}) {
+  // const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user") || {}))
 
   const handleUser = () => {
     setUser(localStorage.setItem("user", user))
@@ -26,7 +26,7 @@ function App() {
           <Route path="/about" element={<About />}/>
           <Route path="/admin" element={<Admin />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/login" element={<Login />} handleUser={[user, setUser]} />
+          <Route path="/login" element={<Login handleUser={[user, setUser]} />} />
           <Route path="/signup" element={<Signup />} handleUser={[user, setUser]} />
           <Route path="/update" element={<Update />} />
         </Routes>

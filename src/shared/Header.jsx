@@ -1,9 +1,10 @@
-function Header({ name }) {
+function Header(/*{ user, setUser }*/) {
+    const { user, setUser } = () => {this.props}
     return (
         <header>
             <div className="nav_bar">
             <div className="logo">
-                <a href="/"><img src="../public/images/CodeSquad-Comics-logo.jpg" /></a>
+                <a href="/"><img src="../images/CodeSquad-Comics-logo.jpg" /></a>
             </div>
             <div className="logoless_navbar">
                 <div className="nav_bar_home">
@@ -15,8 +16,8 @@ function Header({ name }) {
                 <div className="nav_bar_login">
                     <a href="/login">LOGIN</a>
                 </div>
-                <div>
-                    {name}
+                <div onLoad={setUser}>
+                    {user}
                 </div>
             </div>
           </div>
@@ -24,4 +25,4 @@ function Header({ name }) {
     )
 }
 
-export default Header;
+export default Header

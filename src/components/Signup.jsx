@@ -1,7 +1,12 @@
-function Signup({ user }) {
+function Signup(/*{ user, setUser }*/) {
+    const { user, setUser } = this.props
     const submitForm = (e) => {
         e.preventDefault()
         console.log("This method has been run.")
+        console.log(e.target.first_name.value)
+        console.log(e.target.last_name.value)
+        console.log(e.target.email_address.value)
+        console.log(e.target.password.value)
     }
 
     return (
