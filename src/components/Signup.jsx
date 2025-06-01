@@ -1,4 +1,4 @@
-function Signup(/*{ user, setUser }*/) {
+function Signup() {
     const { user, setUser } = this.props
     const submitForm = (e) => {
         e.preventDefault()

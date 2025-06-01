@@ -1,4 +1,4 @@
-function Login(/*{ user, setUser }*/) {
+function Login() {
     const { user, setUser } = this.props
     
     const submitForm = (e) => {

@@ -1,4 +1,4 @@
-function Header(/*{ user, setUser }*/) {
+function Header() {
     const { user, setUser } = () => {this.props}
     return (
         <header>
